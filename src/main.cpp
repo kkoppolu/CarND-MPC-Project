@@ -90,7 +90,7 @@ int main() {
           double px = j[1]["x"];
           double py = j[1]["y"];
           double psi = j[1]["psi"];
-          double v = j[1]["speed"];
+          double v = j[1]["speed"] * 0.44704; // m/s
 
           // Display the waypoints/reference line
           vector<double> next_x_vals;
@@ -113,7 +113,7 @@ int main() {
 
           double cte = polyeval(coeffs, 0);
           double f_dot = coeffs[1]; // at x = 0
-          double epsi = atan(f_dot);
+          double epsi = -atan(f_dot);
 
           Eigen::VectorXd state(6);
           state << 0, 0, 0, v, cte, epsi;
